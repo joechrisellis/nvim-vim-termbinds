@@ -1,0 +1,58 @@
+*vim-termbinds.txt* Make the `nvim` terminal behave like the `vim` terminal
+
+Author:  Joe Ellis
+License: Same terms as Vim itself (see |license|)
+
+
+INTRODUCTION                                    *vim-termbinds*
+
+This plugin adds bindings to make `nvim`'s terminal behave like plain-ol'
+`vim`.
+
+WARNING: This is an experimental plugin. The idea is to get as close to
+         plain-ol' `vim` bindings as possible, but I'm not sure if it's
+         possible to get 100% of the way.
+
+This plugin implements enough of the `vim` behaviour for my personal workflow,
+but do raise an issue if something's wrong.
+
+
+BINDINGS                                        *vim-termbinds-bindings*
+
+The plugin tries to match the behaviour of `vim``s built-in terminal as
+closely as possible. Have a look at `:h terminal-typing` inside of `vim`.
+
+Some useful bindings:
+
+    CTRL-W CTRL-W   move focus to the next window
+    CTRL-W :        enter an Ex command
+
+    CTRL-W .        send a CTRL-W to the job in the terminal
+    CTRL-W CTRL-\   send a CTRL-\ to the job in the terminal
+    CTRL-W N        go to normal mode
+    CTRL-\ CTRL-N   go to normal mode
+    CTRL-W " {reg}  paste register {reg}
+                    Also works with the = register to insert the result of
+                    evaluating an expression.
+    CTRL-W CTRL-C   ends the job, see below |t_CTRL-W_CTRL-C|
+    CTRL-W gt       go to next tabpage, same as `gt`
+    CTRL-W gT       go to previous tabpage, same as `gT`
+
+
+OTHER CHANGES                                   *vim-termbinds-other-changes*
+
+- entering a terminal buffer in `vim` sets the mode to whatever it was in
+  previously. For example, if you use CTRL-W CTRL-W to leave a terminal
+  window, then re-enter it, you'll be put back into terminal (insert) mode.
+  vim-termbinds changes the `nvim` built-in terminal to match this behaviour.
+
+
+ISSUES                                          *vim-termbinds-issues*
+
+- Putting from the expression register in terminal mode with CTRL-W " = does
+  not have syntax highlighting.
+- Completion behaviour when using CTRL-W : is finicky.
+
+Raise an issue on GitHub if something's wrong.
+
+ vim:tw=78:ts=8:ft=help:norl:
