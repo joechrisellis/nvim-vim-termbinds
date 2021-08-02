@@ -38,6 +38,8 @@ Some useful bindings:
     CTRL-W gt       go to next tabpage, same as `gt`
     CTRL-W gT       go to previous tabpage, same as `gT`
 
+All other CTRL-W keystroke are treated as window commands.
+
 
 OTHER CHANGES                                   *vim-termbinds-other-changes*
 
