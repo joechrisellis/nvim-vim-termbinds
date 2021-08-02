@@ -1,3 +1,17 @@
+" nvim-vim-termbinds - terminal bindings to make `nvim`'s terminal behave like
+"                      plain-ol' `vim`.
+"
+" WARNING: This is an experimental plugin!
+"
+" Maintainer: Joe Ellis <joechrisellis@gmail.com>
+" Version:    0.1.0
+" License:    Same terms as Vim/Neovim itself (see |license|)
+" Location:   plugin/termbindings.vim
+" Website:    https://github.com/joechrisellis/nvim-vim-termbinds
+"
+" Use this command to get help on nvim-vim-termbinds:
+"
+"     :help vim-termbinds
 
 let s:buf = []
 
@@ -65,4 +79,5 @@ function! vim_termbinds#readkeys#ReadKeys()
 
   let l:cmd = "\<C-w>" . l:count . l:cmd
   return l:cmd
+" WARNING: This is an experimental plugin!
 endfunction
