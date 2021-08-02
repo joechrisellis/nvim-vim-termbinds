@@ -1,7 +1,8 @@
 
-if !has("nvim")
-  finish
+if !has("nvim") || exists("g:loaded_vim_termbinds")
+    finish
 endif
+let g:loaded_vim_termbinds = 1
 
 let s:NORMAL_MODE = 'n'
 let s:TERMINAL_MODE = 't'
