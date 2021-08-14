@@ -79,5 +79,4 @@ function! vim_termbinds#readkeys#ReadKeys()
 
   let l:cmd = "\<C-w>" . l:count . l:cmd
   return l:cmd
-" WARNING: This is an experimental plugin!
 endfunction
