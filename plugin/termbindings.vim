@@ -70,7 +70,6 @@ function! s:CtrlWHandler()
     return
   endtry
 
-
   let l:winnr_before = win_getid()
   call nvim_feedkeys("\<C-\>\<C-n>" . l:key_cmd, 'intx', v:false)
   let l:winnr_after = win_getid()
