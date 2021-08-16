@@ -21,7 +21,17 @@ let g:loaded_vim_termbinds = 1
 let s:NORMAL_MODE = 'n'
 let s:TERMINAL_MODE = 't'
 
+let s:has_nu = 0
+let s:has_rnu = 0
+
 function! s:SetNormalMode()
+  if s:has_nu == 1
+    set nu
+  endif
+  if s:has_rnu == 1
+    set rnu
+  endif
+
   let b:term_mode = s:NORMAL_MODE
 endfunction
 
@@ -90,12 +100,28 @@ tnoremap <silent> <C-w><C-\> <C-\>
 tnoremap <silent> <cmd> <C-w><C-c> <cmd>call jobstop(b:terminal_job_id)<cr>
 
 function! s:RestorePreviousBuffer()
-    if &splitbelow == 0
-        :belowright split #
-    else
-        :aboveleft split #
-    endif
+  if &splitbelow == 0
+    :belowright split #
+  else
+    :aboveleft split #
+  endif
 endfunction
 
 autocmd TermOpen * :call <sid>RestorePreviousBuffer()
 autocmd TermOpen * startinsert
+
+function! s:SaveNumsSettings()
+  if &nu == 1
+    let s:has_nu = 1
+  endif
+  if &rnu == 1
+    let s:has_rnu = 1
+  endif
+endfunction
+
+function! s:UnsetNums()
+  set nonu nornu
+endfunction
+
+autocmd TermOpen * :call <sid>SaveNumsSettings()
+autocmd TermEnter * :call <sid>UnsetNums()
