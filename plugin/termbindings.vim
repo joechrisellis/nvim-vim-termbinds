@@ -88,3 +88,14 @@ tnoremap <silent> <C-w> <C-\><C-n>:<C-u>call <sid>CtrlWHandler()<cr>
 tnoremap <silent> <C-w>. <C-w>
 tnoremap <silent> <C-w><C-\> <C-\>
 tnoremap <silent> <cmd> <C-w><C-c> <cmd>call jobstop(b:terminal_job_id)<cr>
+
+function! s:RestorePreviousBuffer()
+    if &splitbelow == 0
+        :belowright split #
+    else
+        :aboveleft split #
+    endif
+endfunction
+
+autocmd TermOpen * :call <sid>RestorePreviousBuffer()
+autocmd TermOpen * startinsert
