@@ -58,7 +58,10 @@ augroup vim_termbindings
   " - mouse is released (they might have just clicked on a terminal window)
   autocmd BufEnter * call s:TermEnter()
   autocmd WinEnter * call s:TermEnter()
+
   autocmd TermOpen * nnoremap <silent><buffer><leftrelease> <leftrelease>:<C-u>call <sid>TermEnter()<cr>
+  autocmd TermOpen * startinsert
+  autocmd TermOpen * set nonumber norelativenumber
 augroup END
 
 function! s:CtrlWHandler()
